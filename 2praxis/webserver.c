@@ -25,7 +25,6 @@ struct tuple resources[MAX_RESOURCES] = {
     {"/static/baz", "Baz", sizeof "Baz" - 1}};
 
 
-//LULA BEGINNT
 typedef struct {
     uint16_t node_id;
     uint16_t predecessor_id;
@@ -172,7 +171,6 @@ void handle_udp(uint8_t *buffer) { //, size_t length, struct sockaddr_in *client
     }
 }
 
-//LULA ENDET
 
 
 /**
@@ -189,7 +187,6 @@ void send_reply(int conn, struct request *request) {
     char *reply = buffer;
     size_t offset = 0;
 
-    //LULA BEGINNT
     uint16_t hash = pseudo_hash((const unsigned char *)request->uri, strlen(request->uri));
 
     size_t resource_length = 0;
@@ -423,9 +420,8 @@ static struct sockaddr_in derive_sockaddr(const char *host, const char *port) {
     return result;
 }
 
-//LULA BEGINNT
 void setup_udp_socket(struct sockaddr_in addr) {
-    const int disable = 1;
+    //const int disable = 1;
     const int enable = 1;
 
     udp_socket = socket(AF_INET, SOCK_DGRAM, 0);
@@ -456,7 +452,6 @@ void setup_udp_socket(struct sockaddr_in addr) {
 
     //return udp_socket;
 }
-//LULA ENDET
 
 /**
  * Sets up a TCP server socket and binds it to the provided sockaddr_in address.
@@ -556,7 +551,7 @@ int main(int argc, char **argv) {
     printf("Node ID: %u\n", config.node_id);
     printf("Predecessor: ID=%u, IP=%s, Port=%d\n", config.predecessor_id, config.predecessor_ip, config.predecessor_port);
     printf("Successor: ID=%u, IP=%s, Port=%d\n", config.successor_id, config.successor_ip, config.successor_port);
-    //LULA ENDET
+
     int MAX_CLIENTS = 1;
     struct pollfd sockets[MAX_CLIENTS+2]; 
     memset(sockets, 0x0, sizeof(struct pollfd) * (MAX_CLIENTS+2));
@@ -608,7 +603,7 @@ int main(int argc, char **argv) {
 
             //handle received data
             uint8_t flag = (uint8_t)buffer[0];
-            uint16_t hash = (uint16_t)((buffer[1] << 8) | buffer[2]);
+            //uint16_t hash = (uint16_t)((buffer[1] << 8) | buffer[2]);
 
             if (flag == 1) { 
               fprintf(stderr, "[DEBUG: %d] Got Reply. head at %d\n", config.node_id, kh_head);
@@ -652,6 +647,6 @@ int main(int argc, char **argv) {
         }
      }
     
-    close(udp_socket); //(LULA)
+    close(udp_socket); 
     return EXIT_FAILURE;
 }
