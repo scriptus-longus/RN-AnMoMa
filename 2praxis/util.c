@@ -50,6 +50,3 @@ uint16_t pseudo_hash(const unsigned char *buffer, size_t buf_len) {
 
     return (uint16_t) ~hash;
 }
-
-
-

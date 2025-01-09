@@ -164,4 +164,3 @@ string get_header(const struct request *request, const string name) {
     }
     return NULL; // Header not found
 }
-

@@ -1,0 +1,4 @@
+2praxis/build/*
+2praxis/build/
+2praxis/test/__pycache__/
+2praxis/test/__pycache__/*
