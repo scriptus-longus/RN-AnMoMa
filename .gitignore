@@ -2,3 +2,7 @@
 2praxis/build/
 2praxis/test/__pycache__/
 2praxis/test/__pycache__/*
+3praxis/build/*
+3praxis/build/
+3praxis/test/__pycache__/
+3praxis/test/__pycache__/*

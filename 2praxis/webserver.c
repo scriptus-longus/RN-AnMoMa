@@ -629,7 +629,7 @@ int main(int argc, char **argv) {
               fprintf(stderr, "[Warning] Unknonwn DHT Flag\n");
             }
 
-            sockets[1].revents = 0;
+            //sockets[1].revents = 0;
           }
 
           // check remainging
